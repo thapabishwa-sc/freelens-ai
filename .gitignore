@@ -1,0 +1,17 @@
+node_modules/**
+out/
+*.tgz
+
+# IDE
+.idea/
+*.swp
+*.swo
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.*

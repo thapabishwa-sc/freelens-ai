@@ -1,0 +1,121 @@
+// FreeLens AI - Relationship Graph Styles
+
+.flai-graph {
+  width: 100%;
+  height: 350px;
+  border: 1px solid var(--borderFaintColor, rgba(128, 128, 128, 0.2));
+  border-radius: 6px;
+  background: var(--mainBackground, #fafafa);
+  overflow: hidden;
+
+  // Override React Flow defaults for dark theme
+  .react-flow__background {
+    background: transparent;
+  }
+
+  .react-flow__edge-path {
+    stroke-width: 1.5;
+  }
+
+  .react-flow__controls {
+    bottom: 8px;
+    left: 8px;
+
+    button {
+      background: var(--buttonDefaultBackground, rgba(0, 0, 0, 0.08));
+      border-color: var(--borderFaintColor, rgba(128, 128, 128, 0.2));
+      color: var(--textColorPrimary, #1a1a1a);
+
+      &:hover {
+        background: var(--buttonDefaultBackground, rgba(0, 0, 0, 0.12));
+      }
+
+      svg {
+        fill: var(--textColorPrimary, #1a1a1a);
+      }
+    }
+  }
+
+  .react-flow__attribution {
+    display: none;
+  }
+}
+
+// ── Custom Node ──
+
+.flai-graph-node {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1.5px solid var(--borderFaintColor, rgba(128, 128, 128, 0.3));
+  background: var(--mainBackground, #fafafa);
+  min-width: 120px;
+  max-width: 200px;
+  font-size: 11px;
+  cursor: default;
+  transition: border-color 0.15s;
+
+  &--current {
+    border-width: 2px;
+    border-color: var(--buttonPrimaryBackground, #3b82f6);
+    box-shadow: 0 0 8px color-mix(in srgb, var(--buttonPrimaryBackground, #3b82f6) 25%, transparent);
+  }
+
+  &--healthy {
+    border-color: color-mix(in srgb, var(--colorSuccess, #22c55e) 50%, transparent);
+  }
+
+  &--warning {
+    border-color: color-mix(in srgb, var(--colorWarning, #eab308) 50%, transparent);
+  }
+
+  &--critical {
+    border-color: color-mix(in srgb, var(--colorError, #ef4444) 50%, transparent);
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  &__kind {
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    padding: 1px 5px;
+    border-radius: 3px;
+    background: var(--buttonPrimaryBackground, #3b82f6);
+    color: var(--buttonPrimaryColor, #fff);
+    white-space: nowrap;
+  }
+
+  &__name {
+    font-family: monospace;
+    font-size: 11px;
+    color: var(--textColorPrimary, #1a1a1a);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__status {
+    font-size: 10px;
+    opacity: 0.6;
+    color: var(--textColorSecondary, #555);
+  }
+}
+
+// ── Edge Labels ──
+
+.flai-graph-edge-label {
+  font-size: 9px;
+  padding: 1px 5px;
+  border-radius: 3px;
+  background: var(--mainBackground, #fafafa);
+  color: var(--textColorSecondary, #555);
+  border: 1px solid var(--borderFaintColor, rgba(128, 128, 128, 0.15));
+}
